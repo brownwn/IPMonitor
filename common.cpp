@@ -1,4 +1,5 @@
 #include "common.h"
+using namespace ipmon;
 
 char* iptos(u_long in)
 {
@@ -18,4 +19,20 @@ char* mactos(u_char* in)
     snprintf(output[which], sizeof(output[which]),
         "%02X-%02X-%02X-%02X-%02X-%02X", in[0], in[1], in[2], in[3], in[4], in[5]);
     return output[which];
+}
+
+string GetProtocol(unsigned char Protocol)
+{
+    switch(int(Protocol))
+    {
+         case 1: return "ICMP";
+         case 2: return "IGMP";
+         case 4: return "IP in IP";
+         case 6: return "TCP";
+         case 8: return "UDP";
+         case 17: return "EGP";
+         case 41: return "IPv6";
+         case 89: return "OSPF";
+         default: return "UNKNOW";
+    }
 }

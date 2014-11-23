@@ -16,6 +16,7 @@
 #define ARP_REPLY		0x0002							//操作：ARP应答为2
 
 #define IPTOSBUFFERS 12
+
 using namespace std;
 typedef struct ethernet_head
 {
@@ -62,6 +63,7 @@ namespace ipmon{
         std::string source;
         std::string destination;
         std::string protocol;
+        int number;
     };
 
     typedef struct protocol
@@ -70,8 +72,10 @@ namespace ipmon{
         char* name;
     }protocol_s;
 
+
 }
 
 char* iptos(u_long in);
 char* mactos(u_char* in);
+string GetProtocol(unsigned char  Protocol);
 #endif // COMMON_H

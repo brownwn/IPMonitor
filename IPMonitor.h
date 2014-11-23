@@ -4,15 +4,19 @@
 //ipmonitor class header
 
 #include "common.h"
-typedef map<string, record> MY_MAP;
+#include <map>
+//using namespace std;
+typedef map<string, ipmon::record> MY_MAP;
 class IPMonitor
 {
 private:
     MY_MAP myHash;
-    char* devname;
+    const char* devname;
+    int netmask;
+    unsigned long ipaddress;
     pcap_t* handle;
 public:
-    IPMonitor();
+    IPMonitor(ipmon::nic_device nd);
     ~IPMonitor();
     void OpenDev();
     void compilefilter();
